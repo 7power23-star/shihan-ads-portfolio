@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shihan Ads – Ad Video Editing &amp; Static Ad Design</title>
+<meta name="description" content="Shihan Ads makes ad videos, long-form edits and static ad designs for brands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0F1B3D;--paper:#F3F5FA;--mute:#56607A;--line:#D3D9E6;--sun:#FFC93C;--card:#fff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--navy);font:400 17px/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.08;letter-spacing:-.02em}
+:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:60px 0}
+h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--mute);max-width:54ch;margin-bottom:28px}
+
+/* top: logo */
+.top{background:var(--navy);color:#fff;text-align:center;padding:34px 22px 30px}
+.logo{display:inline-flex;align-items:center;gap:12px;font:800 clamp(30px,6vw,52px) "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
+.logo img{max-height:84px;max-width:80vw}
+.logo i{width:.7em;height:.7em;background:var(--sun);border-radius:50%;display:inline-block}
+.tag{color:#B9C2DC;margin-top:6px}
+
+/* marquees */
+.marq{overflow:hidden;width:100%}
+.lane{display:flex;gap:18px;width:max-content}
+.ltr{animation:toright 60s linear infinite}
+.rtl{animation:toleft 28s linear infinite}
+.marq:hover .lane{animation-play-state:paused}
+@keyframes toright{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes toleft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.card{width:min(78vw,340px);flex:none}
+.vid{display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:12px;background:#0b1220 center/cover no-repeat;position:relative;cursor:pointer;overflow:hidden}
+.vid::after{content:"";position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px;border-radius:50%;background:var(--sun) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230F1B3D' d='M9 7l9 5-9 5z'/%3E%3C/svg%3E") center/32px no-repeat}
+.vid.on::after{display:none}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.card p{font-size:15px;color:var(--mute);margin-top:8px}
+.card b{color:var(--navy);font-weight:500}
+
+/* about ads */
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.box{background:var(--card);border-radius:14px;padding:26px;border:1px solid var(--line)}
+.box h3{font-size:23px;margin-bottom:8px}
+.box p{color:var(--mute);font-size:16px}
+.box ul{margin:12px 0 0 18px;color:var(--mute);font-size:15px}
+
+/* brands */
+.brands{background:var(--card);border-block:1px solid var(--line);padding:34px 0}
+.brands h2{text-align:center;font-size:26px;margin-bottom:22px}
+.brand{flex:none;width:150px;height:64px;display:grid;place-items:center;color:var(--mute);font-weight:500}
+.brand img{max-width:100%;max-height:100%;object-fit:contain}
+
+/* reviews */
+.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.rev blockquote{background:var(--navy);color:#fff;border-radius:14px;padding:26px}
+.rev blockquote p{font-size:18px;line-height:1.5}
+.rev footer{margin-top:16px;color:var(--sun);font-size:15px}
+
+/* contact + payment */
+.contact{background:var(--navy);color:#fff}
+.contact .sub{color:#B9C2DC}
+.rows{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:500;background:var(--sun);color:var(--navy)}
+.btn.o{background:transparent;color:#fff;border:1.5px solid #fff}
+.btn:hover{filter:brightness(1.08)}
+.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
+.pay div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.pay b{font:800 20px "Bricolage Grotesque",sans-serif;display:block}
+.pay span{color:var(--mute);font-size:15px;word-break:break-all}
+.foot{text-align:center;color:var(--mute);font-size:14px;padding:24px}
+
+@media(prefers-reduced-motion:reduce){.lane{animation:none}.marq{overflow-x:auto}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="logo">
+    <!-- Put your logo file next to index.html as logo.png -->
+    <img src="logo.png" alt="Shihan Ads" onerror="this.replaceWith(Object.assign(document.createElement('span'),{innerHTML:'<i></i> Shihan Ads'}))">
+  </div>
+  <p class="tag">Ad videos, long-form edits and static ad designs</p>
+</header>
+
+<main>
+<section aria-labelledby="w">
+  <div class="wrap"><h2 id="w">Selected work</h2><p class="sub">Ad videos and long-form edits. Hover to pause, click to play.</p></div>
+  <div class="marq"><div class="lane ltr" id="work"></div></div>
+</section>
+
+<section aria-labelledby="a" style="padding-top:20px">
+  <div class="wrap">
+    <h2 id="a">Why great ads sell</h2>
+    <p class="sub">A good ad does one job: it makes the right person stop, understand and act. Here is how I build them.</p>
+    <div class="three">
+      <div class="box"><h3>Video ads</h3><p>The first three seconds decide everything. I open with a strong hook, keep the pacing tight and end with one clear call to action.</p>
+        <ul><li>Facebook and Instagram ads</li><li>YouTube and TikTok ads</li><li>UGC-style and product ads</li></ul></div>
+      <div class="box"><h3>Static ads</h3><p>One image has to do the work of a whole video. Clear message, bold product focus and a layout that reads at a glance on a phone.</p>
+        <ul><li>Social media posts and carousels</li><li>Product offer banners</li><li>Sale and campaign creatives</li></ul></div>
+      <div class="box"><h3>Design that fits your brand</h3><p>Every ad starts with your colors, fonts and tone. I plan the message first, then design, edit and refine until it feels like your brand.</p>
+        <ul><li>Brief and message planning</li><li>Design, motion and captions</li><li>Revisions until it is right</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="brands" aria-labelledby="b">
+  <h2 id="b">Brands I have worked with</h2>
+  <div class="marq"><div class="lane rtl" id="brands"></div></div>
+</section>
+
+<section aria-labelledby="r">
+  <div class="wrap">
+    <h2 id="r">What clients say</h2>
+    <p class="sub">Replace these with real reviews from your clients.</p>
+    <div class="rev">
+      <blockquote><p>Client review goes here. Mention the result, the speed or the quality of the work.</p><footer>Client name, Brand</footer></blockquote>
+      <blockquote><p>Client review goes here. Mention the result, the speed or the quality of the work.</p><footer>Client name, Brand</footer></blockquote>
+      <blockquote><p>Client review goes here. Mention the result, the speed or the quality of the work.</p><footer>Client name, Brand</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="c">
+  <div class="wrap">
+    <h2 id="c">Contact</h2>
+    <p class="sub">Send your brief and deadline. I reply within a day.</p>
+    <div class="rows">
+      <a class="btn" href="tel:+8801XXXXXXXXX">Call 01XXX-XXXXXX</a>
+      <a class="btn" href="https://wa.me/8801XXXXXXXXX">WhatsApp</a>
+      <a class="btn o" href="mailto:you@example.com">you@example.com</a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="p">
+  <div class="wrap">
+    <h2 id="p">Payment options</h2>
+    <p class="sub">Pay after we agree on the price. Send the receipt on WhatsApp.</p>
+    <div class="pay">
+      <div><b>bKash</b><span>01XXX-XXXXXX (Personal)</span></div>
+      <div><b>Nagad</b><span>01XXX-XXXXXX (Personal)</span></div>
+      <div><b>Bank transfer</b><span>Bank name, account name and number</span></div>
+      <div><b>International</b><span>Payoneer, Wise or PayPal email</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<p class="foot">© <span id="y"></span> Shihan Ads</p>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+
+/* 1. Your work: replace each id with a YouTube video ID, and edit the label */
+var WORK=[
+ {id:'VIDEO_ID_1',t:'Ad video',d:'Brand name'},
+ {id:'VIDEO_ID_2',t:'Ad video',d:'Brand name'},
+ {id:'VIDEO_ID_3',t:'Long-form video',d:'Channel or brand'},
+ {id:'VIDEO_ID_4',t:'Ad video',d:'Brand name'},
+ {id:'VIDEO_ID_5',t:'Long-form video',d:'Channel or brand'},
+ {id:'VIDEO_ID_6',t:'Ad video',d:'Brand name'}
+];
+/* 2. Brand logos: put image files in a "brands" folder and list names here */
+var BRANDS=['brand1.png','brand2.png','brand3.png','brand4.png','brand5.png','brand6.png'];
+
+function card(w){
+  var c=document.createElement('div');c.className='card';
+  var b=document.createElement('button');b.className='vid';b.setAttribute('aria-label','Play '+w.t);
+  b.style.backgroundImage='url(https://i.ytimg.com/vi/'+w.id+'/hqdefault.jpg)';
+  b.onclick=function(){var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+w.id+'?autoplay=1&rel=0';
+    f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=w.t;
+    b.textContent='';b.appendChild(f);b.classList.add('on');b.style.cursor='default'};
+  var p=document.createElement('p');p.innerHTML='<b>'+w.t+'</b> · '+w.d;
+  c.appendChild(b);c.appendChild(p);return c}
+function brand(n){
+  var d=document.createElement('div');d.className='brand';
+  var i=new Image();i.src='brands/'+n;i.alt=n.replace(/\..*/,'');i.loading='lazy';
+  i.onerror=function(){d.textContent=i.alt};d.appendChild(i);return d}
+function fill(id,items,make){var l=document.getElementById(id);
+  for(var k=0;k<2;k++)items.forEach(function(x){l.appendChild(make(x))})}
+fill('work',WORK,card);fill('brands',BRANDS,brand);
+</script>
+</body>
+</html>
