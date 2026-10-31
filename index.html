@@ -42,6 +42,14 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 .vid::after{content:"";position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px;border-radius:50%;background:var(--sun) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230A2A10' d='M9 7l9 5-9 5z'/%3E%3C/svg%3E") center/32px no-repeat}
 .vid.on::after{display:none}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.card.tall{width:min(52vw,210px)}
+.card.tall .vid{aspect-ratio:9/16}
+.vid.fb{display:grid;place-items:center;background:var(--navy);color:#fff;text-decoration:none;text-align:center}
+.vid.fb::after{display:none}
+.vid.fb span{font:800 26px "Bricolage Grotesque",sans-serif}
+.vid.fb small{display:block;font:400 14px "DM Sans",sans-serif;color:#BBD6BE;margin-top:6px}
+.vid.fb:hover{background:#0F3A18}
+.lbl{font-size:22px;font-weight:500;margin-bottom:14px}
 .card p{font-size:15px;color:var(--mute);margin-top:8px}
 .card b{color:var(--navy);font-weight:500}
 
@@ -102,7 +110,10 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 <main>
 <section aria-labelledby="w">
   <div class="wrap"><h2 id="w">Selected work</h2><p class="sub">Ad videos and long-form edits. Hover to pause, click to play.</p></div>
+  <div class="wrap"><h3 class="lbl">Ads and long-form videos</h3></div>
   <div class="marq"><div class="lane ltr" id="work"></div></div>
+  <div class="wrap"><h3 class="lbl" style="margin-top:34px">Shorts and Reels</h3></div>
+  <div class="marq"><div class="lane ltr" id="shorts"></div></div>
 </section>
 
 <section aria-labelledby="a" style="padding-top:20px">
@@ -181,12 +192,16 @@ document.getElementById('y').textContent=new Date().getFullYear();
 
 /* 1. Your work: paste the full YouTube link (unlisted is fine) or the video ID in id */
 var WORK=[
- {id:'VIDEO_ID_1',t:'Ad video',d:'Brand name'},
- {id:'VIDEO_ID_2',t:'Ad video',d:'Brand name'},
- {id:'VIDEO_ID_3',t:'Long-form video',d:'Channel or brand'},
- {id:'VIDEO_ID_4',t:'Ad video',d:'Brand name'},
- {id:'VIDEO_ID_5',t:'Long-form video',d:'Channel or brand'},
- {id:'VIDEO_ID_6',t:'Ad video',d:'Brand name'}
+ {id:'https://youtu.be/vr1Dql4PNyc',t:'Video edit',d:'Brand name'},
+ {link:'https://www.facebook.com/ads/library/?id=2368142173716309',t:'Ad video',d:'Brand name'},
+ {id:'https://youtu.be/GGKi1mvKEbM',t:'Video edit',d:'Brand name'},
+ {link:'https://www.facebook.com/ads/library/?id=2163739217902282',t:'Ad video',d:'Brand name'},
+ {id:'https://youtu.be/BDQJnXULVw0',t:'Video edit',d:'Brand name'}
+];
+/* Shorts and Reels (vertical videos) */
+var SHORTS=[
+ {id:'https://youtube.com/shorts/4jUYyRsVwq4',t:'Short',d:'Brand name',tall:true},
+ {id:'https://youtube.com/shorts/vUQ5z5wVFhQ',t:'Short',d:'Brand name',tall:true}
 ];
 /* 2. Brand logos: files live in the "brands" folder. Format: ['file name','Brand name'] */
 var BRANDS=[
@@ -197,23 +212,30 @@ var BRANDS=[
 ];
 
 function vidId(x){x=String(x).trim();var m=x.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/);return m?m[1]:x}
-function card(w){w.id=vidId(w.id);
-  var c=document.createElement('div');c.className='card';
-  var b=document.createElement('button');b.className='vid';b.setAttribute('aria-label','Play '+w.t);
-  b.style.backgroundImage='url(https://i.ytimg.com/vi/'+w.id+'/hqdefault.jpg)';
-  b.onclick=function(){var f=document.createElement('iframe');
-    f.src='https://www.youtube-nocookie.com/embed/'+w.id+'?autoplay=1&rel=0';
-    f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=w.t;
-    b.textContent='';b.appendChild(f);b.classList.add('on');b.style.cursor='default'};
-  var p=document.createElement('p');p.innerHTML='<b>'+w.t+'</b> · '+w.d;
+function card(w){
+  var c=document.createElement('div');c.className='card'+(w.tall?' tall':'');
+  var b;
+  if(w.link){
+    b=document.createElement('a');b.className='vid fb';b.href=w.link;b.target='_blank';b.rel='noopener';
+    b.innerHTML='<span>Facebook Ad<small>View on Ad Library \u2197</small></span>';
+  }else{
+    var id=vidId(w.id);
+    b=document.createElement('button');b.className='vid';b.setAttribute('aria-label','Play '+w.t);
+    b.style.backgroundImage='url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
+    b.onclick=function(){var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+      f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=w.t;
+      b.textContent='';b.appendChild(f);b.classList.add('on');b.style.cursor='default'};
+  }
+  var p=document.createElement('p');p.innerHTML='<b>'+w.t+'</b> \u00b7 '+w.d;
   c.appendChild(b);c.appendChild(p);return c}
 function brand(b){
   var d=document.createElement('div');d.className='brand';
   var i=new Image();i.src='Brands/'+b[0];i.alt=b[1];i.loading='lazy';
   i.onerror=function(){d.textContent=b[1]};d.appendChild(i);return d}
-function fill(id,items,make){var l=document.getElementById(id);
-  for(var k=0;k<2;k++)items.forEach(function(x){l.appendChild(make(x))})}
-fill('work',WORK,card);fill('brands',BRANDS,brand);
+function fill(id,items,make){var l=document.getElementById(id),r=Math.max(1,Math.ceil(8/items.length));
+  for(var k=0;k<2*r;k++)items.forEach(function(x){l.appendChild(make(x))})}
+fill('work',WORK,card);fill('shorts',SHORTS,card);fill('brands',BRANDS,brand);
 
 /* Contact form */
 var WA_NUMBER='8801XXXXXXXXX';          /* WhatsApp number, country code first, no + */
