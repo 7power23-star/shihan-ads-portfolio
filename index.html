@@ -49,6 +49,8 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 .vid.fb span{font:800 26px "Bricolage Grotesque",sans-serif}
 .vid.fb small{display:block;font:400 14px "DM Sans",sans-serif;color:#BBD6BE;margin-top:6px}
 .vid.fb:hover{background:#0F3A18}
+.lane.still{width:auto;justify-content:center;flex-wrap:wrap;padding:0 22px;animation:none}
+.still .card{width:min(100%,640px);margin-right:0}
 .lbl{font-size:22px;font-weight:500;margin-bottom:14px}
 .card p{font-size:15px;color:var(--mute);margin-top:8px}
 .card b{color:var(--navy);font-weight:500}
@@ -68,10 +70,13 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 .brand{display:flex;align-items:center;justify-content:center;color:var(--mute);font-weight:500;text-align:center}
 
 /* reviews */
-.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.rev blockquote{background:var(--navy);color:#fff;border-radius:14px;padding:26px}
-.rev blockquote p{font-size:18px;line-height:1.5}
-.rev footer{margin-top:16px;color:var(--sun);font-size:15px}
+.rev{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.rev blockquote{display:flex;flex-direction:column}
+.rev blockquote p{flex:1}
+.stars{color:#FFC93C;font-size:22px;letter-spacing:3px;margin-bottom:10px}
+.rev footer{display:flex;align-items:center;gap:12px;margin-top:18px;color:#fff;font-weight:500;font-size:16px}
+.av{width:42px;height:42px;border-radius:50%;background:var(--sun);color:var(--navy);display:grid;place-items:center;font:800 15px "Bricolage Grotesque",sans-serif;flex:none}
+@media(max-width:700px){.rev{grid-template-columns:1fr}}
 
 /* contact + payment */
 .contact{background:var(--navy);color:#fff}
@@ -94,6 +99,7 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 @media(max-width:640px){.cf{grid-template-columns:1fr}}
 .foot{text-align:center;color:var(--mute);font-size:14px;padding:24px}
 
+@media(max-width:640px){.brand{width:128px;height:60px;margin-right:34px}.brands h2{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.lane{animation:none}.marq{overflow-x:auto}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -109,11 +115,11 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 
 <main>
 <section aria-labelledby="w">
-  <div class="wrap"><h2 id="w">Selected work</h2><p class="sub">Ad videos and long-form edits. Hover to pause, click to play.</p></div>
-  <div class="wrap"><h3 class="lbl">Ads and long-form videos</h3></div>
-  <div class="marq"><div class="lane ltr" id="work"></div></div>
-  <div class="wrap"><h3 class="lbl" style="margin-top:34px">Shorts and Reels</h3></div>
+  <div class="wrap"><h2 id="w">Selected work</h2><p class="sub">Hover to pause, click to play.</p></div>
+  <div class="wrap"><h3 class="lbl">Shorts and Reels</h3></div>
   <div class="marq"><div class="lane ltr" id="shorts"></div></div>
+  <div class="wrap"><h3 class="lbl" style="margin-top:34px">VSLs and Long Video Ads</h3></div>
+  <div class="marq"><div class="lane ltr" id="work"></div></div>
 </section>
 
 <section aria-labelledby="a" style="padding-top:20px">
@@ -139,11 +145,12 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 <section aria-labelledby="r">
   <div class="wrap">
     <h2 id="r">What clients say</h2>
-    <p class="sub">Replace these with real reviews from your clients.</p>
+    <p class="sub">Reviews from clients I have worked with.</p>
     <div class="rev">
-      <blockquote><p>Client review goes here. Mention the result, the speed or the quality of the work.</p><footer>Client name, Brand</footer></blockquote>
-      <blockquote><p>Client review goes here. Mention the result, the speed or the quality of the work.</p><footer>Client name, Brand</footer></blockquote>
-      <blockquote><p>Client review goes here. Mention the result, the speed or the quality of the work.</p><footer>Client name, Brand</footer></blockquote>
+      <blockquote><div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div><p>Tahsinur is best of the best, really enjoyed working with him. He always delivers everything on time, the quality of his work is excellent, and he's very pleasant to communicate with. Highly recommended!</p><footer><span class="av" aria-hidden="true">R</span><span>— Ross</span></footer></blockquote>
+      <blockquote><div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div><p>MD created an intro video for my homepage and provided three options to choose from. When I selected one, he edited it to meet my requirements and was extremely patient throughout the process, making adjustments until I got exactly what I wanted. He is very polite and professional, and I will definitely work with him again.</p><footer><span class="av" aria-hidden="true">SY</span><span>— Sirak Yohans</span></footer></blockquote>
+      <blockquote><div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div><p>Extremely good editor quickly has become one of my main go-to guys. always proficient and very detailed. thank you</p><footer><span class="av" aria-hidden="true">KS</span><span>— Kaydo Smith</span></footer></blockquote>
+      <blockquote><div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div><p>Great to work with delivered an amazing video!</p><footer><span class="av" aria-hidden="true">NL</span><span>— NFT Lover</span></footer></blockquote>
     </div>
   </div>
 </section>
@@ -192,16 +199,19 @@ document.getElementById('y').textContent=new Date().getFullYear();
 
 /* 1. Your work: paste the full YouTube link (unlisted is fine) or the video ID in id */
 var WORK=[
- {id:'https://youtu.be/vr1Dql4PNyc',t:'Video edit',d:'Brand name'},
- {link:'https://www.facebook.com/ads/library/?id=2368142173716309',t:'Ad video',d:'Brand name'},
- {id:'https://youtu.be/GGKi1mvKEbM',t:'Video edit',d:'Brand name'},
- {link:'https://www.facebook.com/ads/library/?id=2163739217902282',t:'Ad video',d:'Brand name'},
- {id:'https://youtu.be/BDQJnXULVw0',t:'Video edit',d:'Brand name'}
+ {id:'https://youtu.be/-OwekgCCSxA',t:'VSL / Long video ad',d:''}
 ];
-/* Shorts and Reels (vertical videos) */
+/* Shorts and Reels (vertical 9:16) */
 var SHORTS=[
- {id:'https://youtube.com/shorts/4jUYyRsVwq4',t:'Short',d:'Brand name',tall:true},
- {id:'https://youtube.com/shorts/vUQ5z5wVFhQ',t:'Short',d:'Brand name',tall:true}
+ {id:'https://youtube.com/shorts/T3ajSjcMCXQ',t:'Short',d:'',tall:true},
+ {id:'https://youtube.com/shorts/AzvO9Yr_FqI',t:'Short',d:'',tall:true},
+ {id:'https://youtube.com/shorts/6_2WN20V0BM',t:'Short',d:'',tall:true},
+ {id:'https://youtube.com/shorts/w_bM82p1Q3g',t:'Short',d:'',tall:true},
+ {id:'https://youtube.com/shorts/iTGLO4nqpp8',t:'Short',d:'',tall:true},
+ {id:'https://youtube.com/shorts/8xVt4ypkHFQ',t:'Short',d:'',tall:true},
+ {id:'https://youtube.com/shorts/lQE2DyArwpc',t:'Short',d:'',tall:true},
+ {id:'https://youtube.com/shorts/9STgbWFgemQ',t:'Short',d:'',tall:true},
+ {id:'https://youtube.com/shorts/76cPAQcx7eA',t:'Short',d:'',tall:true}
 ];
 /* 2. Brand logos: files live in the "brands" folder. Format: ['file name','Brand name'] */
 var BRANDS=[
@@ -227,13 +237,15 @@ function card(w){
       f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=w.t;
       b.textContent='';b.appendChild(f);b.classList.add('on');b.style.cursor='default'};
   }
-  var p=document.createElement('p');p.innerHTML='<b>'+w.t+'</b> \u00b7 '+w.d;
+  var p=document.createElement('p');p.innerHTML='<b>'+w.t+'</b>'+(w.d?' \u00b7 '+w.d:'');
   c.appendChild(b);c.appendChild(p);return c}
 function brand(b){
   var d=document.createElement('div');d.className='brand';
   var i=new Image();i.src='Brands/'+b[0];i.alt=b[1];i.loading='lazy';
   i.onerror=function(){d.textContent=b[1]};d.appendChild(i);return d}
-function fill(id,items,make){var l=document.getElementById(id),r=Math.max(1,Math.ceil(8/items.length));
+function fill(id,items,make){var l=document.getElementById(id);
+  if(items.length<4){l.classList.remove('ltr');l.classList.add('still');items.forEach(function(x){l.appendChild(make(x))});return}
+  var r=Math.max(1,Math.ceil(8/items.length));
   for(var k=0;k<2*r;k++)items.forEach(function(x){l.appendChild(make(x))})}
 fill('work',WORK,card);fill('shorts',SHORTS,card);fill('brands',BRANDS,brand);
 
