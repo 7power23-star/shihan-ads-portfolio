@@ -208,7 +208,7 @@ function card(w){w.id=vidId(w.id);
   c.appendChild(b);c.appendChild(p);return c}
 function brand(b){
   var d=document.createElement('div');d.className='brand';
-  var i=new Image();i.src='brands/'+b[0];i.alt=b[1];i.loading='lazy';
+  var i=new Image();i.src='Brands/'+b[0];i.alt=b[1];i.loading='lazy';
   i.onerror=function(){d.textContent=b[1]};d.appendChild(i);return d}
 function fill(id,items,make){var l=document.getElementById(id);
   for(var k=0;k<2;k++)items.forEach(function(x){l.appendChild(make(x))})}
