@@ -27,6 +27,20 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 .logo{display:inline-flex;align-items:center;gap:12px;font:800 clamp(30px,6vw,52px) "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
 .logo img{height:92px;width:auto;max-width:80vw}
 .logo i{width:.7em;height:.7em;background:var(--sun);border-radius:50%;display:inline-block}
+.aboutbtn{margin-top:14px;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:11px 26px;font:500 16px "DM Sans",sans-serif;cursor:pointer}
+.aboutbtn:hover{background:var(--sun)}
+dialog{border:0;border-radius:18px;padding:28px;width:min(92vw,820px);max-height:88vh;overflow:auto;color:var(--navy);background:#fff}
+dialog::backdrop{background:rgba(6,24,10,.6)}
+.x{position:absolute;top:8px;right:14px;background:none;border:0;font-size:34px;line-height:1;cursor:pointer;color:var(--navy)}
+.ab{display:grid;grid-template-columns:210px 1fr;gap:26px;align-items:start}
+.ab img{width:210px;height:210px;object-fit:cover;border-radius:16px}
+.ab h2{font-size:34px}
+.ab h3{font-size:20px;margin:18px 0 6px}
+.ab p{color:var(--mute);margin-bottom:12px}
+.ab ul{margin:0 0 14px 20px;color:var(--mute)}
+.ab li{margin-bottom:6px}.ab li b{color:var(--navy);font-weight:500}
+.ab a{color:var(--navy)}
+@media(max-width:640px){.ab{grid-template-columns:1fr}.ab img{width:150px;height:150px}}
 .tag{color:var(--mute);margin-top:6px}
 
 /* marquees */
@@ -71,10 +85,10 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 
 /* reviews */
 .rev{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.rev blockquote{display:flex;flex-direction:column}
-.rev blockquote p{flex:1}
-.stars{color:#FFC93C;font-size:22px;letter-spacing:3px;margin-bottom:10px}
-.rev footer{display:flex;align-items:center;gap:12px;margin-top:18px;color:#fff;font-weight:500;font-size:16px}
+.rev blockquote{display:flex;flex-direction:column;background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:14px;padding:26px}
+.rev blockquote p{flex:1;font-size:18px;line-height:1.5}
+.stars{color:#F2A900;font-size:22px;letter-spacing:3px;margin-bottom:10px}
+.rev footer{display:flex;align-items:center;gap:12px;margin-top:18px;color:#000;font-weight:500;font-size:16px}
 .av{width:42px;height:42px;border-radius:50%;background:var(--sun);color:var(--navy);display:grid;place-items:center;font:800 15px "Bricolage Grotesque",sans-serif;flex:none}
 @media(max-width:700px){.rev{grid-template-columns:1fr}}
 
@@ -85,7 +99,10 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
 .btn{display:inline-block;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:500;background:var(--sun);color:var(--navy)}
 .btn.o{background:transparent;color:#fff;border:1.5px solid #fff}
 .btn:hover{filter:brightness(1.08)}
-.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
+.paybtn{background:var(--navy);color:#fff;border:0;border-radius:999px;padding:14px 28px;font:500 18px "DM Sans",sans-serif;cursor:pointer}
+.paybtn:hover{background:var(--sun)}
+.pay[hidden]{display:none}
+.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
 .pay div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
 .pay b{font:800 20px "Bricolage Grotesque",sans-serif;display:block}
 .pay span{color:var(--mute);font-size:15px;word-break:break-all}
@@ -111,15 +128,14 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
     <img src="logo.png" alt="Shihan Ads" onerror="this.replaceWith(Object.assign(document.createElement('span'),{innerHTML:'<i></i> Shihan Ads'}))">
   </div>
   <p class="tag">Ad videos, long-form edits and static ad designs</p>
+  <button class="aboutbtn" id="aboutb" type="button">About Me</button>
 </header>
 
 <main>
 <section aria-labelledby="w">
   <div class="wrap"><h2 id="w">Selected work</h2><p class="sub">Hover to pause, click to play.</p></div>
-  <div class="wrap"><h3 class="lbl">Shorts and Reels</h3></div>
   <div class="marq"><div class="lane ltr" id="shorts"></div></div>
-  <div class="wrap"><h3 class="lbl" style="margin-top:34px">VSLs and Long Video Ads</h3></div>
-  <div class="marq"><div class="lane ltr" id="work"></div></div>
+  <div class="marq" style="margin-top:34px"><div class="lane ltr" id="work"></div></div>
 </section>
 
 <section aria-labelledby="a" style="padding-top:20px">
@@ -160,9 +176,8 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
     <h2 id="c">Contact</h2>
     <p class="sub">Send your brief and deadline. I reply within a day.</p>
     <div class="rows">
-      <a class="btn" href="tel:+8801XXXXXXXXX">Call 01XXX-XXXXXX</a>
-      <a class="btn" href="https://wa.me/8801XXXXXXXXX">WhatsApp</a>
-      <a class="btn o" href="mailto:you@example.com">you@example.com</a>
+      <a class="btn" href="https://wa.me/8801989332343">WhatsApp +880 1989 332343</a>
+      <a class="btn o" href="mailto:horbola7@gmail.com">horbola7@gmail.com</a>
     </div>
     <form class="cf" id="cf">
       <input name="name" placeholder="Your name" aria-label="Your name" required>
@@ -178,40 +193,62 @@ h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
   </div>
 </section>
 
-<section aria-labelledby="p">
+<section>
   <div class="wrap">
-    <h2 id="p">Payment options</h2>
-    <p class="sub">Pay after we agree on the price. Send the receipt on WhatsApp.</p>
-    <div class="pay">
-      <div><b>bKash</b><span>01XXX-XXXXXX (Personal)</span></div>
-      <div><b>Nagad</b><span>01XXX-XXXXXX (Personal)</span></div>
-      <div><b>Bank transfer</b><span>Bank name, account name and number</span></div>
+    <button class="paybtn" id="payb" type="button" aria-expanded="false" aria-controls="payp">Payment Options <span aria-hidden="true">&#9662;</span></button>
+    <div class="pay" id="payp" hidden>
+      <div><b>Bank Transfer</b><span>Bank name, account name and number</span></div>
       <div><b>International</b><span>Payoneer, Wise or PayPal email</span></div>
+      <div><b>Visa / Mastercard</b><span>Card payment link or details</span></div>
     </div>
   </div>
 </section>
 </main>
 
-<p class="foot">© <span id="y"></span> Shihan Ads</p>
+<p class="foot">© 2026 Shihan Ads</p>
+
+<dialog id="about" aria-labelledby="abt">
+  <button class="x" id="aboutx" type="button" aria-label="Close">&times;</button>
+  <div class="ab">
+    <img src="about.jpg" alt="Md Tahsinur Rahman (Shihan)">
+    <div>
+      <h2 id="abt">About Me</h2>
+      <p>Hello! I’m Md Tahsinur Rahman (Shihan), a results-driven Paid Ads Video Editor and Top Rated freelancer specializing in high-converting ad creatives for Meta, TikTok, and E-commerce brands.</p>
+      <p>While my editing background covers a diverse range of projects, my true passion and primary focus lie in video advertising, short-form ad strategies, and AI UGC content. I thrive on crafting engaging visual hooks, precise pacing, and dynamic captions designed to capture immediate attention and drive real sales for clients.</p>
+      <p>Equipped with professional expertise in Adobe Premiere Pro and After Effects, I combine creative motion design with a strategic understanding of what makes high-performing ads tick. Known for my rapid 2-3 day turnarounds and responsive communication, I love partnering with brands to turn raw footage into high-impact campaigns.</p>
+      <h3>Quick Facts</h3>
+      <ul>
+        <li><b>Core Specialization:</b> Meta Ads, TikTok Ads, YouTube Shorts, &amp; E-commerce Social Media Ads</li>
+        <li><b>Technical Stack:</b> Adobe Premiere Pro, After Effects, and AI UGC Video Creation Tools</li>
+        <li><b>Key Strength:</b> Fast 2-3 day delivery with a strong focus on high-converting ad structures</li>
+        <li><b>Background:</b> Bachelor’s Degree in Wildlife Conservation from Jahangirnagar University, bringing a unique analytical and detail-oriented eye to visual storytelling.</li>
+      </ul>
+      <p>Let’s collaborate and elevate your brand’s video marketing! Feel free to explore my portfolio or reach out directly at <a href="mailto:horbola7@gmail.com">horbola7@gmail.com</a>.</p>
+    </div>
+  </div>
+</dialog>
 
 <script>
-document.getElementById('y').textContent=new Date().getFullYear();
 
 /* 1. Your work: paste the full YouTube link (unlisted is fine) or the video ID in id */
 var WORK=[
- {id:'https://youtu.be/-OwekgCCSxA',t:'VSL / Long video ad',d:''}
+ {id:'https://youtu.be/-OwekgCCSxA'},
+ {id:'https://youtu.be/vr1Dql4PNyc'},
+ {id:'https://youtu.be/GGKi1mvKEbM'},
+ {id:'https://youtu.be/BDQJnXULVw0'},
+ {id:'https://youtu.be/r0q6M6nc4QE'}
 ];
 /* Shorts and Reels (vertical 9:16) */
 var SHORTS=[
- {id:'https://youtube.com/shorts/T3ajSjcMCXQ',t:'Short',d:'',tall:true},
- {id:'https://youtube.com/shorts/AzvO9Yr_FqI',t:'Short',d:'',tall:true},
- {id:'https://youtube.com/shorts/6_2WN20V0BM',t:'Short',d:'',tall:true},
- {id:'https://youtube.com/shorts/w_bM82p1Q3g',t:'Short',d:'',tall:true},
- {id:'https://youtube.com/shorts/iTGLO4nqpp8',t:'Short',d:'',tall:true},
- {id:'https://youtube.com/shorts/8xVt4ypkHFQ',t:'Short',d:'',tall:true},
- {id:'https://youtube.com/shorts/lQE2DyArwpc',t:'Short',d:'',tall:true},
- {id:'https://youtube.com/shorts/9STgbWFgemQ',t:'Short',d:'',tall:true},
- {id:'https://youtube.com/shorts/76cPAQcx7eA',t:'Short',d:'',tall:true}
+ {id:'https://youtube.com/shorts/T3ajSjcMCXQ',tall:true},
+ {id:'https://youtube.com/shorts/AzvO9Yr_FqI',tall:true},
+ {id:'https://youtube.com/shorts/6_2WN20V0BM',tall:true},
+ {id:'https://youtube.com/shorts/w_bM82p1Q3g',tall:true},
+ {id:'https://youtube.com/shorts/iTGLO4nqpp8',tall:true},
+ {id:'https://youtube.com/shorts/8xVt4ypkHFQ',tall:true},
+ {id:'https://youtube.com/shorts/lQE2DyArwpc',tall:true},
+ {id:'https://youtube.com/shorts/9STgbWFgemQ',tall:true},
+ {id:'https://youtube.com/shorts/76cPAQcx7eA',tall:true}
 ];
 /* 2. Brand logos: files live in the "brands" folder. Format: ['file name','Brand name'] */
 var BRANDS=[
@@ -230,15 +267,16 @@ function card(w){
     b.innerHTML='<span>Facebook Ad<small>View on Ad Library \u2197</small></span>';
   }else{
     var id=vidId(w.id);
-    b=document.createElement('button');b.className='vid';b.setAttribute('aria-label','Play '+w.t);
+    b=document.createElement('button');b.className='vid';b.setAttribute('aria-label','Play video');
     b.style.backgroundImage='url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
     b.onclick=function(){var f=document.createElement('iframe');
       f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
-      f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=w.t;
+      f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title='Portfolio video';
       b.textContent='';b.appendChild(f);b.classList.add('on');b.style.cursor='default'};
   }
-  var p=document.createElement('p');p.innerHTML='<b>'+w.t+'</b>'+(w.d?' \u00b7 '+w.d:'');
-  c.appendChild(b);c.appendChild(p);return c}
+  c.appendChild(b);
+  if(w.t||w.d){var p=document.createElement('p');p.innerHTML='<b>'+(w.t||'')+'</b>'+(w.d?' \u00b7 '+w.d:'');c.appendChild(p)}
+  return c}
 function brand(b){
   var d=document.createElement('div');d.className='brand';
   var i=new Image();i.src='Brands/'+b[0];i.alt=b[1];i.loading='lazy';
@@ -249,10 +287,18 @@ function fill(id,items,make){var l=document.getElementById(id);
   for(var k=0;k<2*r;k++)items.forEach(function(x){l.appendChild(make(x))})}
 fill('work',WORK,card);fill('shorts',SHORTS,card);fill('brands',BRANDS,brand);
 
+/* About dialog and payment toggle */
+var ab=document.getElementById('about');
+document.getElementById('aboutb').onclick=function(){ab.showModal()};
+document.getElementById('aboutx').onclick=function(){ab.close()};
+ab.addEventListener('click',function(e){if(e.target===ab)ab.close()});
+var pb=document.getElementById('payb'),pp=document.getElementById('payp');
+pb.onclick=function(){var open=pp.hidden;pp.hidden=!open;pb.setAttribute('aria-expanded',String(open))};
+
 /* Contact form */
-var WA_NUMBER='8801XXXXXXXXX';          /* WhatsApp number, country code first, no + */
+var WA_NUMBER='8801989332343';          /* WhatsApp number, country code first, no + */
 var FORM_KEY='YOUR_WEB3FORMS_KEY';      /* free key from web3forms.com (sent to your email) */
-var EMAIL='you@example.com';
+var EMAIL='horbola7@gmail.com';
 var f=document.getElementById('cf'),msg=document.getElementById('msg');
 function body(){var d=new FormData(f);
  return 'Name: '+d.get('name')+'\nBrand: '+(d.get('brand')||'-')+'\nContact: '+d.get('contact')+'\nWork type: '+d.get('type')+'\nDetails: '+d.get('details')}
