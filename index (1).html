@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shihan Ads – Ad Video Editing &amp; Static Ad Design</title>
+<meta name="theme-color" content="#0DA40D">
+<link rel="icon" href="logo.png">
+<meta name="description" content="Shihan Ads makes ad videos, long-form edits and static ad designs for brands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A2A10;--paper:#F2F8F2;--mute:#4F5F4F;--line:#D0DFD0;--sun:#0DA40D;--card:#fff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--navy);font:400 17px/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.08;letter-spacing:-.02em}
+:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:60px 0}
+h2{font-size:clamp(28px,4.6vw,44px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--mute);max-width:54ch;margin-bottom:28px}
+
+/* top: logo */
+.top{background:#fff;color:var(--navy);text-align:center;padding:26px 22px 22px;border-bottom:3px solid var(--sun)}
+.logo{display:inline-flex;align-items:center;gap:12px;font:800 clamp(30px,6vw,52px) "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
+.logo img{height:92px;width:auto;max-width:80vw}
+.logo i{width:.7em;height:.7em;background:var(--sun);border-radius:50%;display:inline-block}
+.aboutbtn{margin-top:14px;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:11px 26px;font:500 16px "DM Sans",sans-serif;cursor:pointer}
+.aboutbtn:hover{background:var(--sun)}
+dialog{border:0;border-radius:18px;padding:28px;width:min(92vw,820px);max-height:88vh;overflow:auto;color:var(--navy);background:#fff}
+dialog::backdrop{background:rgba(6,24,10,.6)}
+.x{position:absolute;top:8px;right:14px;background:none;border:0;font-size:34px;line-height:1;cursor:pointer;color:var(--navy)}
+.ab{display:grid;grid-template-columns:210px 1fr;gap:26px;align-items:start}
+.ab img{width:210px;height:210px;object-fit:cover;border-radius:16px}
+.ab h2{font-size:34px}
+.ab h3{font-size:20px;margin:18px 0 6px}
+.ab p{color:var(--mute);margin-bottom:12px}
+.ab ul{margin:0 0 14px 20px;color:var(--mute)}
+.ab li{margin-bottom:6px}.ab li b{color:var(--navy);font-weight:500}
+.ab a{color:var(--navy)}
+@media(max-width:640px){.ab{grid-template-columns:1fr}.ab img{width:150px;height:150px}}
+.tag{color:var(--mute);margin-top:6px}
+
+/* marquees */
+.marq{overflow:hidden;width:100%}
+.lane{display:flex;width:max-content}
+.ltr{animation:toright 60s linear infinite}
+.rtl{animation:toleft 55s linear infinite}
+.marq:hover .lane{animation-play-state:paused}
+@keyframes toright{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes toleft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.card{width:min(78vw,340px);flex:none;margin-right:18px}
+.vid{display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:12px;background:#0b1220 center/cover no-repeat;position:relative;cursor:pointer;overflow:hidden}
+.vid::after{content:"";position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px;border-radius:50%;background:var(--sun) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230A2A10' d='M9 7l9 5-9 5z'/%3E%3C/svg%3E") center/32px no-repeat}
+.vid.on::after{display:none}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.card.tall{width:min(52vw,210px)}
+.card.tall .vid{aspect-ratio:9/16}
+.vid.fb{display:grid;place-items:center;background:var(--navy);color:#fff;text-decoration:none;text-align:center}
+.vid.fb::after{display:none}
+.vid.fb span{font:800 26px "Bricolage Grotesque",sans-serif}
+.vid.fb small{display:block;font:400 14px "DM Sans",sans-serif;color:#BBD6BE;margin-top:6px}
+.vid.fb:hover{background:#0F3A18}
+.lane.still{width:auto;justify-content:center;flex-wrap:wrap;padding:0 22px;animation:none}
+.still .card{width:min(100%,640px);margin-right:0}
+.lbl{font-size:22px;font-weight:500;margin-bottom:14px}
+.card p{font-size:15px;color:var(--mute);margin-top:8px}
+.card b{color:var(--navy);font-weight:500}
+
+/* about ads */
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.box{background:var(--card);border-radius:14px;padding:26px;border:1px solid var(--line)}
+.box h3{font-size:23px;margin-bottom:8px}
+.box p{color:var(--mute);font-size:16px}
+.box ul{margin:12px 0 0 18px;color:var(--mute);font-size:15px}
+
+/* brands */
+.brands{background:var(--card);border-block:1px solid var(--line);padding:34px 0}
+.brands h2{text-align:center;font-size:26px;margin-bottom:22px}
+.brand{flex:none;width:190px;height:84px;margin-right:90px}
+.brand img{display:block;width:100%;height:100%;object-fit:contain}
+.brand{display:flex;align-items:center;justify-content:center;color:var(--mute);font-weight:500;text-align:center}
+
+/* reviews */
+.rev{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.rev blockquote{display:flex;flex-direction:column;background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:14px;padding:26px}
+.rev blockquote p{flex:1;font-size:18px;line-height:1.5}
+.stars{color:#F2A900;font-size:22px;letter-spacing:3px;margin-bottom:10px}
+.rev footer{display:flex;align-items:center;gap:12px;margin-top:18px;color:#000;font-weight:500;font-size:16px}
+.av{width:42px;height:42px;border-radius:50%;background:var(--sun);color:var(--navy);display:grid;place-items:center;font:800 15px "Bricolage Grotesque",sans-serif;flex:none}
+@media(max-width:700px){.rev{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--navy);color:#fff}
+.contact .sub{color:#BBD6BE}
+.rows{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:500;background:var(--sun);color:var(--navy)}
+.btn.o{background:transparent;color:#fff;border:1.5px solid #fff}
+.btn:hover{filter:brightness(1.08)}
+.cf{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:720px;margin-top:30px}
+.cf input,.cf select,.cf textarea{width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid #2E6B38;background:#123A1A;color:#fff;font:inherit}
+.cf input::placeholder,.cf textarea::placeholder{color:#9FC4A5}
+.cf textarea,.cf .full{grid-column:1/-1}
+.cf button.btn{border:0;font:inherit;font-weight:500;cursor:pointer}
+.cf button.o{border:1.5px solid #fff}
+#msg{grid-column:1/-1;color:var(--sun);min-height:1.5em}
+@media(max-width:640px){.cf{grid-template-columns:1fr}}
+.foot{text-align:center;color:var(--mute);font:400 14px/1.6 "DM Sans",system-ui,sans-serif;padding:28px 22px}
+
+@media(max-width:640px){.brand{width:128px;height:60px;margin-right:34px}.brands h2{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.lane{animation:none}.marq{overflow-x:auto}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="logo">
+    <!-- Put your logo file next to index.html as logo.png -->
+    <img src="logo.png" alt="Shihan Ads" onerror="this.replaceWith(Object.assign(document.createElement('span'),{innerHTML:'<i></i> Shihan Ads'}))">
+  </div>
+  <p class="tag">Ad videos, long-form edits and static ad designs</p>
+  <button class="aboutbtn" id="aboutb" type="button">About Me</button>
+</header>
+
+<main>
+<section aria-labelledby="w">
+  <div class="wrap"><h2 id="w">Selected work</h2><p class="sub">Hover to pause, click to play.</p></div>
+  <div class="marq"><div class="lane ltr" id="shorts"></div></div>
+  <div class="marq" style="margin-top:34px"><div class="lane ltr" id="work"></div></div>
+</section>
+
+<section aria-labelledby="a" style="padding-top:20px">
+  <div class="wrap">
+    <h2 id="a">Why great ads sell</h2>
+    <p class="sub">A good ad does one job: it makes the right person stop, understand and act. Here is how I build them.</p>
+    <div class="three">
+      <div class="box"><h3>Video ads</h3><p>The first three seconds decide everything. I open with a strong hook, keep the pacing tight and end with one clear call to action.</p>
+        <ul><li>Facebook and Instagram ads</li><li>YouTube and TikTok ads</li><li>UGC-style and product ads</li></ul></div>
+      <div class="box"><h3>Static ads</h3><p>One image has to do the work of a whole video. Clear message, bold product focus and a layout that reads at a glance on a phone.</p>
+        <ul><li>Social media posts and carousels</li><li>Product offer banners</li><li>Sale and campaign creatives</li></ul></div>
+      <div class="box"><h3>Design that fits your brand</h3><p>Every ad starts with your colors, fonts and tone. I plan the message first, then design, edit and refine until it feels like your brand.</p>
+        <ul><li>Brief and message planning</li><li>Design, motion and captions</li><li>Revisions until it is right</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="brands" aria-labelledby="b">
+  <h2 id="b">Brands I have worked with</h2>
+  <div class="marq"><div class="lane rtl" id="brands"></div></div>
+</section>
+
+<section aria-labelledby="r">
+  <div class="wrap">
+    <h2 id="r">What clients say</h2>
+    <p class="sub">Reviews from clients I have worked with.</p>
+    <div class="rev">
+      <blockquote><div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div><p>Tahsinur is best of the best, really enjoyed working with him. He always delivers everything on time, the quality of his work is excellent, and he's very pleasant to communicate with. Highly recommended!</p><footer><span class="av" aria-hidden="true">R</span><span>— Ross</span></footer></blockquote>
+      <blockquote><div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div><p>MD created an intro video for my homepage and provided three options to choose from. When I selected one, he edited it to meet my requirements and was extremely patient throughout the process, making adjustments until I got exactly what I wanted. He is very polite and professional, and I will definitely work with him again.</p><footer><span class="av" aria-hidden="true">SY</span><span>— Sirak Yohans</span></footer></blockquote>
+      <blockquote><div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div><p>Extremely good editor quickly has become one of my main go-to guys. always proficient and very detailed. thank you</p><footer><span class="av" aria-hidden="true">KS</span><span>— Kaydo Smith</span></footer></blockquote>
+      <blockquote><div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div><p>Great to work with delivered an amazing video!</p><footer><span class="av" aria-hidden="true">NL</span><span>— NFT Lover</span></footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="c">
+  <div class="wrap">
+    <h2 id="c">Contact</h2>
+    <p class="sub">Send your brief and deadline. I reply within a day.</p>
+    <div class="rows">
+      <a class="btn" href="https://wa.me/8801989332343">WhatsApp</a>
+    </div>
+    <form class="cf" id="cf">
+      <input name="name" placeholder="Your name" aria-label="Your name" required>
+      <input name="brand" placeholder="Brand name" aria-label="Brand name">
+      <input name="contact" placeholder="Email or phone number" aria-label="Email or phone number" required>
+      <select name="type" aria-label="Type of work">
+        <option>Ad video</option><option>Long-form video</option><option>Reels / Shorts</option><option>Static ad design</option><option>Other</option>
+      </select>
+      <textarea name="details" rows="4" placeholder="Briefly describe the work you need" aria-label="Work details" required></textarea>
+      <div class="rows full"><button type="submit" class="btn">Send by email</button><button type="button" class="btn o" id="wa">Send on WhatsApp</button></div>
+      <p id="msg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<p class="foot">© 2024–2026 Shihan Ads</p>
+
+<dialog id="about" aria-labelledby="abt">
+  <button class="x" id="aboutx" type="button" aria-label="Close">&times;</button>
+  <div class="ab">
+    <img src="about.jpg" alt="Md Tahsinur Rahman (Shihan)">
+    <div>
+      <h2 id="abt">About Me</h2>
+      <p>Hello! I’m Md Tahsinur Rahman (Shihan), a results-driven Paid Ads Video Editor and Top Rated freelancer specializing in high-converting ad creatives for Meta, TikTok, and E-commerce brands.</p>
+      <p>While my editing background covers a diverse range of projects, my true passion and primary focus lie in video advertising, short-form ad strategies, and AI UGC content. I thrive on crafting engaging visual hooks, precise pacing, and dynamic captions designed to capture immediate attention and drive real sales for clients.</p>
+      <p>Equipped with professional expertise in Adobe Premiere Pro and After Effects, I combine creative motion design with a strategic understanding of what makes high-performing ads tick. Known for my rapid 2-3 day turnarounds and responsive communication, I love partnering with brands to turn raw footage into high-impact campaigns.</p>
+      <h3>Quick Facts</h3>
+      <ul>
+        <li><b>Core Specialization:</b> Meta Ads, TikTok Ads, YouTube Shorts, &amp; E-commerce Social Media Ads</li>
+        <li><b>Technical Stack:</b> Adobe Premiere Pro, After Effects, and AI UGC Video Creation Tools</li>
+        <li><b>Key Strength:</b> Fast 2-3 day delivery with a strong focus on high-converting ad structures</li>
+        <li><b>Background:</b> Bachelor’s Degree in Wildlife Conservation from Jahangirnagar University, bringing a unique analytical and detail-oriented eye to visual storytelling.</li>
+      </ul>
+      <p>Let’s collaborate and elevate your brand’s video marketing! Feel free to explore my portfolio or reach out directly at <a href="mailto:horbola7@gmail.com">horbola7@gmail.com</a>.</p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+
+/* 1. Your work: paste the full YouTube link (unlisted is fine) or the video ID in id */
+var WORK=[
+ {id:'https://youtu.be/-OwekgCCSxA'},
+ {id:'https://youtu.be/vr1Dql4PNyc'},
+ {id:'https://youtu.be/GGKi1mvKEbM'},
+ {id:'https://youtu.be/BDQJnXULVw0'},
+ {id:'https://youtu.be/r0q6M6nc4QE'}
+];
+/* Shorts and Reels (vertical 9:16) */
+var SHORTS=[
+ {id:'https://youtube.com/shorts/T3ajSjcMCXQ',tall:true},
+ {id:'https://youtube.com/shorts/AzvO9Yr_FqI',tall:true},
+ {id:'https://youtube.com/shorts/6_2WN20V0BM',tall:true},
+ {id:'https://youtube.com/shorts/w_bM82p1Q3g',tall:true},
+ {id:'https://youtube.com/shorts/iTGLO4nqpp8',tall:true},
+ {id:'https://youtube.com/shorts/8xVt4ypkHFQ',tall:true},
+ {id:'https://youtube.com/shorts/lQE2DyArwpc',tall:true},
+ {id:'https://youtube.com/shorts/9STgbWFgemQ',tall:true},
+ {id:'https://youtube.com/shorts/76cPAQcx7eA',tall:true}
+];
+/* 2. Brand logos: files live in the "brands" folder. Format: ['file name','Brand name'] */
+var BRANDS=[
+ ['ads-creative-house.png','Ads Creative House'],['boxing-explainers.jpg','Boxing Explainers'],['gravitate-digital.jpg','Gravitate Digital'],
+ ['haven-environmental.png','Haven Environmental'],['inspirewall-sticker.png','InspireWall Sticker'],['johns-pest-solutions.png','John\'s Pest Solutions'],
+ ['movies-explained.png','Movies Explained'],['ridd.jpg','RIDD'],['solve-pest-pros.jpg','Solve Pest Pros'],
+ ['spartan.png','Spartan'],['triptales-today.png','TripTales Today']
+];
+
+function vidId(x){x=String(x).trim();var m=x.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/);return m?m[1]:x}
+function card(w){
+  var c=document.createElement('div');c.className='card'+(w.tall?' tall':'');
+  var b;
+  if(w.link){
+    b=document.createElement('a');b.className='vid fb';b.href=w.link;b.target='_blank';b.rel='noopener';
+    b.innerHTML='<span>Facebook Ad<small>View on Ad Library \u2197</small></span>';
+  }else{
+    var id=vidId(w.id);
+    b=document.createElement('button');b.className='vid';b.setAttribute('aria-label','Play video');
+    b.style.backgroundImage='url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
+    b.onclick=function(){var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+      f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title='Portfolio video';
+      b.textContent='';b.appendChild(f);b.classList.add('on');b.style.cursor='default'};
+  }
+  c.appendChild(b);
+  if(w.t||w.d){var p=document.createElement('p');p.innerHTML='<b>'+(w.t||'')+'</b>'+(w.d?' \u00b7 '+w.d:'');c.appendChild(p)}
+  return c}
+function brand(b){
+  var d=document.createElement('div');d.className='brand';
+  var i=new Image();i.src='Brands/'+b[0];i.alt=b[1];i.loading='lazy';
+  i.onerror=function(){d.textContent=b[1]};d.appendChild(i);return d}
+function fill(id,items,make){var l=document.getElementById(id);
+  if(items.length<4){l.classList.remove('ltr');l.classList.add('still');items.forEach(function(x){l.appendChild(make(x))});return}
+  var r=Math.max(1,Math.ceil(8/items.length));
+  for(var k=0;k<2*r;k++)items.forEach(function(x){l.appendChild(make(x))})}
+fill('work',WORK,card);fill('shorts',SHORTS,card);fill('brands',BRANDS,brand);
+
+/* About dialog */
+var ab=document.getElementById('about');
+document.getElementById('aboutb').onclick=function(){ab.showModal()};
+document.getElementById('aboutx').onclick=function(){ab.close()};
+ab.addEventListener('click',function(e){if(e.target===ab)ab.close()});
+
+/* Contact form */
+var WA_NUMBER='8801989332343';          /* WhatsApp number, country code first, no + */
+var FORM_KEY='YOUR_WEB3FORMS_KEY';      /* free key from web3forms.com (sent to your email) */
+var EMAIL='horbola7@gmail.com';
+var f=document.getElementById('cf'),msg=document.getElementById('msg');
+function body(){var d=new FormData(f);
+ return 'Name: '+d.get('name')+'\nBrand: '+(d.get('brand')||'-')+'\nContact: '+d.get('contact')+'\nWork type: '+d.get('type')+'\nDetails: '+d.get('details')}
+document.getElementById('wa').onclick=function(){
+ if(!f.reportValidity())return;
+ window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent('Hello Shihan Ads,\n'+body()),'_blank')};
+f.onsubmit=function(e){e.preventDefault();
+ if(FORM_KEY.indexOf('YOUR_')===0){
+  window.location='mailto:'+EMAIL+'?subject='+encodeURIComponent('New project enquiry')+'&body='+encodeURIComponent(body());return}
+ var d=new FormData(f);d.append('access_key',FORM_KEY);d.append('subject','New enquiry from Shihan Ads website');
+ msg.textContent='Sending...';
+ fetch('https://api.web3forms.com/submit',{method:'POST',body:d}).then(function(r){return r.json()}).then(function(j){
+  if(j.success){msg.textContent='Thank you. I will reply within a day.';f.reset()}else{msg.textContent='Could not send. Please use WhatsApp instead.'}
+ }).catch(function(){msg.textContent='Could not send. Please use WhatsApp instead.'})};
+</script>
+</body>
+</html>
