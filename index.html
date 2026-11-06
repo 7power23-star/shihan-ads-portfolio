@@ -92,20 +92,13 @@ dialog::backdrop{background:rgba(6,24,10,.6)}
 .av{width:42px;height:42px;border-radius:50%;background:var(--sun);color:var(--navy);display:grid;place-items:center;font:800 15px "Bricolage Grotesque",sans-serif;flex:none}
 @media(max-width:700px){.rev{grid-template-columns:1fr}}
 
-/* contact + payment */
+/* contact */
 .contact{background:var(--navy);color:#fff}
 .contact .sub{color:#BBD6BE}
 .rows{display:flex;flex-wrap:wrap;gap:12px}
 .btn{display:inline-block;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:500;background:var(--sun);color:var(--navy)}
 .btn.o{background:transparent;color:#fff;border:1.5px solid #fff}
 .btn:hover{filter:brightness(1.08)}
-.paybtn{background:var(--navy);color:#fff;border:0;border-radius:999px;padding:14px 28px;font:500 18px "DM Sans",sans-serif;cursor:pointer}
-.paybtn:hover{background:var(--sun)}
-.pay[hidden]{display:none}
-.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
-.pay div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
-.pay b{font:800 20px "Bricolage Grotesque",sans-serif;display:block}
-.pay span{color:var(--mute);font-size:15px;word-break:break-all}
 .cf{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:720px;margin-top:30px}
 .cf input,.cf select,.cf textarea{width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid #2E6B38;background:#123A1A;color:#fff;font:inherit}
 .cf input::placeholder,.cf textarea::placeholder{color:#9FC4A5}
@@ -114,7 +107,7 @@ dialog::backdrop{background:rgba(6,24,10,.6)}
 .cf button.o{border:1.5px solid #fff}
 #msg{grid-column:1/-1;color:var(--sun);min-height:1.5em}
 @media(max-width:640px){.cf{grid-template-columns:1fr}}
-.foot{text-align:center;color:var(--mute);font-size:14px;padding:24px}
+.foot{text-align:center;color:var(--mute);font:400 14px/1.6 "DM Sans",system-ui,sans-serif;padding:28px 22px}
 
 @media(max-width:640px){.brand{width:128px;height:60px;margin-right:34px}.brands h2{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.lane{animation:none}.marq{overflow-x:auto}html{scroll-behavior:auto}}
@@ -176,8 +169,7 @@ dialog::backdrop{background:rgba(6,24,10,.6)}
     <h2 id="c">Contact</h2>
     <p class="sub">Send your brief and deadline. I reply within a day.</p>
     <div class="rows">
-      <a class="btn" href="https://wa.me/8801989332343">WhatsApp +880 1989 332343</a>
-      <a class="btn o" href="mailto:horbola7@gmail.com">horbola7@gmail.com</a>
+      <a class="btn" href="https://wa.me/8801989332343">WhatsApp</a>
     </div>
     <form class="cf" id="cf">
       <input name="name" placeholder="Your name" aria-label="Your name" required>
@@ -193,19 +185,9 @@ dialog::backdrop{background:rgba(6,24,10,.6)}
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <button class="paybtn" id="payb" type="button" aria-expanded="false" aria-controls="payp">Payment Options <span aria-hidden="true">&#9662;</span></button>
-    <div class="pay" id="payp" hidden>
-      <div><b>Bank Transfer</b><span>Bank name, account name and number</span></div>
-      <div><b>International</b><span>Payoneer, Wise or PayPal email</span></div>
-      <div><b>Visa / Mastercard</b><span>Card payment link or details</span></div>
-    </div>
-  </div>
-</section>
 </main>
 
-<p class="foot">© 2026 Shihan Ads</p>
+<p class="foot">© 2024–2026 Shihan Ads</p>
 
 <dialog id="about" aria-labelledby="abt">
   <button class="x" id="aboutx" type="button" aria-label="Close">&times;</button>
@@ -287,13 +269,11 @@ function fill(id,items,make){var l=document.getElementById(id);
   for(var k=0;k<2*r;k++)items.forEach(function(x){l.appendChild(make(x))})}
 fill('work',WORK,card);fill('shorts',SHORTS,card);fill('brands',BRANDS,brand);
 
-/* About dialog and payment toggle */
+/* About dialog */
 var ab=document.getElementById('about');
 document.getElementById('aboutb').onclick=function(){ab.showModal()};
 document.getElementById('aboutx').onclick=function(){ab.close()};
 ab.addEventListener('click',function(e){if(e.target===ab)ab.close()});
-var pb=document.getElementById('payb'),pp=document.getElementById('payp');
-pb.onclick=function(){var open=pp.hidden;pp.hidden=!open;pb.setAttribute('aria-expanded',String(open))};
 
 /* Contact form */
 var WA_NUMBER='8801989332343';          /* WhatsApp number, country code first, no + */
